@@ -14,9 +14,10 @@ class PropertyController extends Controller
 {
     public function create()
     {
+        $loggedInUser = Auth::user();
         $categories = Category::all();
 
-        return view('admin.Property.create', compact('categories'));
+        return view('admin.Property.create', compact('categories', 'loggedInUser'));
     }
 
     public function storeProperty(Request $request)
@@ -65,17 +66,19 @@ class PropertyController extends Controller
     }
     public function showProperty()
     {
+        $loggedInUser = Auth::user();
         $categories = Category::all();
         $properties = Property::latest()->paginate(5);
 
-        return view('admin.Property.show', compact('properties', 'categories'));
+        return view('admin.Property.show', compact('properties', 'categories', 'loggedInUser'));
     }
 
     public function edit(Property $property)
     {
+        $loggedInUser = Auth::user();
         $data = Auth::User();
         $categories = Category::all();
-        return view('admin.Property.edit', compact('categories', 'property', 'data'));
+        return view('admin.Property.edit', compact('categories', 'property', 'data', 'loggedInUser'));
     }
 
     public function updateProperty(Request $request, Property $property)

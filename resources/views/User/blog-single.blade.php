@@ -3,7 +3,9 @@
 @include('Inc.header')
 
 <body>
-
+  <!-- Top Bar -->
+        @include('Inc.topbar') <!-- Include the top bar content here -->
+        
     @include('Inc.nav')
     <!-- END nav -->
 

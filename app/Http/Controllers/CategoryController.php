@@ -4,18 +4,23 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Category;
+use Illuminate\Support\Facades\Session;
+use App\Models\User;
+use Illuminate\Support\Facades\Auth;
 
 class CategoryController extends Controller
 {
     public function createCategory()
     {
-        return view('admin.categories.create');
+        $loggedInUser = Auth::user();
+        return view('admin.categories.create', compact('loggedInUser'));
     }
 
     public function showCategory()
     {
+        $loggedInUser = Auth::user();
         $categories = Category::all();
-        return view('admin.categories.show', compact('categories'));
+        return view('admin.categories.show', compact('categories', 'loggedInUser'));
     }
 
     public function storeCategory(Request $request)
@@ -35,7 +40,8 @@ class CategoryController extends Controller
 
     public function editCategory(Category $category)
     {
-        return view('admin.categories.edit', compact('category'));
+        $loggedInUser = Auth::user();
+        return view('admin.categories.edit', compact('category', 'loggedInUser'));
     }
 
     public function updateCategory(Request $request, Category $category)

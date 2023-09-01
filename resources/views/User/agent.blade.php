@@ -3,6 +3,8 @@
 @include('Inc.header')
 
 <body>
+      <!-- Top Bar -->
+        @include('Inc.topbar') <!-- Include the top bar content here -->
 
     @include('Inc.nav')
     <!-- END nav -->
@@ -21,7 +23,7 @@
         </div>
     </section>
 
-    <section class="ftco-section ftco-agent">
+    {{-- <section class="ftco-section ftco-agent">
         <div class="container">
             <div class="row">
                 <div class="col-md-3">
@@ -123,7 +125,7 @@
                 </div>
             </div>
         </div>
-    </section>
+    </section> --}}
 
     @include('Inc.footer')
 

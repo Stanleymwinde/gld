@@ -56,7 +56,7 @@ class UserController extends Controller
         return view('User.services');
     }
 
-    public function agent()
+    public function agents()
     {
         return view('User.agent');
     }

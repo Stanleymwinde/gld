@@ -42,7 +42,9 @@ Route::get('/properties', [UserController::class, 'properties'])->name('properti
 Route::get('/services', [UserController::class, 'services'])->name('services');
 Route::get('/about', [UserController::class, 'about'])->name('about');
 Route::get('/contact', [UserController::class, 'contact'])->name('contact');
-Route::get('/blog', [UserController::class, 'blog'])->name('blog')->name('blog');
+Route::get('/agents', [UserController::class, 'agents'])->name('agents');
+Route::get('/blog', [UserController::class, 'blog'])->name('blog');
+
 Route::get('/blog-single/{blogId}', [UserController::class, 'blog_single'])->name('blog-single');
 Route::get('/agent', [UserController::class, 'agent'])->name('agent')->name('agent');
 Route::get('/properties-single/{propertyId}', [UserController::class, 'prop_single'])->name('properties-single');

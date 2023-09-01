@@ -7,6 +7,9 @@ use App\Models\Category;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Str;
+use Illuminate\Support\Facades\Session;
+use App\Models\User;
+
 
 class BlogController extends Controller
 {
@@ -23,9 +26,10 @@ class BlogController extends Controller
      */
     public function create()
     {
+        $loggedInUser = Auth::user();
         $categories = Category::all();
 
-        return view('admin.blogs.create', compact('categories'));
+        return view('admin.blogs.create', compact('categories', 'loggedInUser'));
     }
 
     // public function singleBlog(Blog $blog)
@@ -87,10 +91,11 @@ class BlogController extends Controller
      */
     public function showBlogs()
     {
+        $loggedInUser = Auth::user();
         $categories = Category::all();
         $blogs = Blog::latest()->paginate(5);
 
-        return view('admin.blogs.show', compact('blogs', 'categories'));
+        return view('admin.blogs.show', compact('blogs', 'categories', 'loggedInUser'));
     }
 
     /**
@@ -98,8 +103,9 @@ class BlogController extends Controller
      */
     public function edit(Blog $blog)
     {
+        $loggedInUser = Auth::user();
         $categories = Category::all();
-        return view('admin.blogs.edit', compact('categories', 'blog'));
+        return view('admin.blogs.edit', compact('categories', 'blog', 'loggedInUser'));
     }
 
     /**
